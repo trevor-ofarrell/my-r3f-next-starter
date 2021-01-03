@@ -5,6 +5,7 @@ import { useEffect, Children } from 'react'
 import Preload from '@/components/loading/loading'
 import { Helmet } from 'react-helmet'
 import { helmet } from '../config'
+import { Perf } from 'r3f-perf'
 
 import '../assets/styles/globals.css'
 
@@ -13,7 +14,10 @@ function SplitApp({ canvas, dom }) {
     <>
       <Helmet {...helmet} />
       {dom && <div className='mx-auto dom'>{dom}</div>}
-      <LCanvas>{canvas && <group>{canvas}</group>}</LCanvas>
+      <LCanvas>
+        <Perf />
+        {canvas && <group>{canvas}</group>}
+      </LCanvas>
       <Preload />
     </>
   )

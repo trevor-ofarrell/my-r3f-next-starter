@@ -29,6 +29,7 @@
   "dependencies": {
     "autoprefixer": "^10.1.0",
     "cross-env": "^7.0.2",
+    "drei": "^2.2.13",
     "express": "^4.17.1",
     "next": "^10.0.3",
     "nodemon": "^2.0.6",
@@ -77,6 +78,7 @@
     "next-transpile-modules": "^6.0.0",
     "next-videos": "^1.4.0",
     "prettier": "^2.2.1",
+    "r3f-perf": "^0.4.0",
     "raw-loader": "^4.0.2",
     "react": "0.0.0-experimental-4ead6b530",
     "react-device-detect": "^1.14.0",

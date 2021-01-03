@@ -1,45 +1,29 @@
-import { Suspense } from 'react'
+import { Suspense, useRef } from 'react'
 import BackButton from '@/components/dom/back/back'
 import useStore from '@/helpers/store'
 import { Helmet } from 'react-helmet'
 import Bird from '@/components/canvas/Bird/Bird'
+import { useGLTF } from '@react-three/drei'
+import { useFrame, Canvas } from 'react-three-fiber'
+import CameraControls from '@/components/CameraControls'
 // import dynamic from 'next/dynamic'
 // const Bird = dynamic(() => import('@/components/canvas/Bird/Bird'), { ssr: false })
 
-const Birds = () => {
-  return new Array(5).fill().map((_, i) => {
-    const x = (7.5 + Math.random() * 15) * (Math.round(Math.random()) ? -1 : 1)
-    const y = -7.5 + Math.random() * 5
-    const z = -2.5 + Math.random() * 5
-    const bird = ['stork', 'parrot', 'flamingo'][Math.round(Math.random() * 2)]
-    let speed = bird === 'stork' ? 0.5 : bird === 'flamingo' ? 2 : 5
-    let factor =
-      bird === 'stork'
-        ? 0.5 + Math.random()
-        : bird === 'flamingo'
-        ? 0.25 + Math.random()
-        : 1 + Math.random() - 0.5
-
-    return (
-      <Bird
-        key={i}
-        position={[x, y, z]}
-        rotation={[0, x > 0 ? Math.PI : 0, 0]}
-        speed={speed}
-        factor={factor}
-        url={`/glb/${bird}.glb`}
-      />
-    )
-  })
+function Model() {
+  const gltf = useGLTF('/porsche/scene.gltf', true)
+  return <primitive object={gltf.scene} dispose={null} />
 }
 
-const Canvas = () => {
+const Porsche = () => {
   return (
-    <group position={[0, 0, -25]}>
+    <group position={[1, 0, -20]}>
+      <CameraControls />
       <ambientLight intensity={2} />
       <pointLight position={[40, 40, 40]} />
       <Suspense fallback={null}>
-        <Birds />
+        <mesh position={[0, 0, 0]}>
+          <Model />
+        </mesh>
       </Suspense>
     </group>
   )
@@ -59,7 +43,7 @@ const Page = () => {
   useStore.setState({ loading: false })
   return (
     <>
-      <Canvas r3f />
+      <Porsche />
       <Dom />
     </>
   )
