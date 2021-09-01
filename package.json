@@ -31,7 +31,7 @@
     "cross-env": "^7.0.2",
     "drei": "^2.2.13",
     "express": "^4.17.1",
-    "next": "^10.0.3",
+    "next": "^11.1.1",
     "nodemon": "^2.0.6",
     "postcss": "^8.2.1",
     "replace-in-file": "^6.1.0",
