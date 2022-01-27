@@ -86,7 +86,7 @@
     "react-helmet": "^6.1.0",
     "react-spring": "^9.0.0-rc.3",
     "react-three-fiber": "^5.3.10",
-    "three": "^0.123.0",
+    "three": "^0.137.0",
     "use-dark-mode": "^2.3.1"
   },
   "license": "MIT"
